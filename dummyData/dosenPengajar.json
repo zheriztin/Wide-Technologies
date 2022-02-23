@@ -1,0 +1,26 @@
+[
+  {
+    "DosenId":1,
+    "MataKuliahId":1
+  },
+  {
+    "DosenId":1,
+    "MataKuliahId":2
+  },
+  {
+    "DosenId":1,
+    "MataKuliahId":3
+  },
+  {
+    "DosenId":2,
+    "MataKuliahId":4
+  },
+  {
+    "DosenId":3,
+    "MataKuliahId":5
+  },
+  {
+    "DosenId":3,
+    "MataKuliahId":6
+  }
+]

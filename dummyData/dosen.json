@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Bobo",
+    "nid": "001",
+    "alamat": "jalan soekarno"
+  },
+  {
+    "name": "nana",
+    "nid": "002",
+    "alamat": "jalan K.H. Mas Mansyur"
+  },
+  {
+    "name": "nini",
+    "nid": "003",
+    "alamat": "jalan karet"
+  }
+]

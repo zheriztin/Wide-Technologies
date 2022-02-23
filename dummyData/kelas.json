@@ -1,0 +1,18 @@
+[
+  {
+    "MahasiswaId":1,
+    "DosenPengajarId":1
+  },
+  {
+    "MahasiswaId":1,
+    "DosenPengajarId":2
+  },
+  {
+    "MahasiswaId":2,
+    "DosenPengajarId":2
+  },
+  {
+    "MahasiswaId":2,
+    "DosenPengajarId":3
+  }
+]

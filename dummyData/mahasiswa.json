@@ -1,0 +1,16 @@
+[
+  {
+    "name": "cici",
+    "nim": "001",
+    "alamat": "jalan bung karno",
+    "jurusan": "system information",
+    "angkatan": 2020
+  },
+  {
+    "name": "lili",
+    "nim": "002",
+    "alamat": "jalan bung karno",
+    "jurusan": "system information",
+    "angkatan": 2021
+  }
+]
