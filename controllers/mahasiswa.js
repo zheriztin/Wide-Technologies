@@ -35,14 +35,17 @@ module.exports = class Controller {
   static createStudentListByLecturers = async (req,res,next) => {
     try {
       const query = `
-      select  d."name" as "d_name", array_to_string(array_agg(m."name"),',') as "mahasiswa" from "Dosens" d
+      select  d."name" as "d_name", "MataKuliahs"."name" as "m_name", m."angkatan" as "angkatan", array_to_string(array_agg(m."name"),',') as "mahasiswa" from "Dosens" d
       left join "DosenPengajars" dp
       on d."id" = dp."DosenId"
       left join "Kelas" k
       on dp."id" = k."DosenPengajarId"
       left join "Mahasiswas" m
       on k."MahasiswaId" =  m."id"
-      group by  "d_name"
+      left join "MataKuliahs" 
+      on "MataKuliahs"."id" = dp."MataKuliahId"
+     WHERE "angkatan" = CASE WHEN Angkatan IS NULL THEN "angkatan" ELSE Angkatan end
+      group by  "d_name", "m_name", "angkatan"
       `
       const response = await sequelize.query(query,{ type: sequelize.QueryTypes.SELECT })
       res.status(200).json(response)
@@ -55,31 +58,9 @@ module.exports = class Controller {
 
   static createStudentListByLecturersWithSubject = async (req,res,next) => {
     try {
-      const query = `
-      select  d."name" as "d_name", "MataKuliahs"."name" as "m_name", array_to_string(array_agg(m."name"),',') as "mahasiswa" from "Dosens" d
-      left join "DosenPengajars" dp
-      on d."id" = dp."DosenId"
-      left join "Kelas" k
-      on dp."id" = k."DosenPengajarId"
-      left join "Mahasiswas" m
-      on k."MahasiswaId" =  m."id"
-      left join "MataKuliahs" 
-      on "MataKuliahs"."id" = dp."MataKuliahId"
-      group by  "d_name", "m_name"
-      `
-      const response = await sequelize.query(query,{ type: sequelize.QueryTypes.SELECT })
-      res.status(200).json(response)
-
-    } catch (error) {
-      res.json({message: error.message, status: error.status})
-      console.log(error);
-    }
-  }
-
-  static createStudentListByBatch = async (req,res,next) => {
-    try {
-      let {angkatan} = req.query
-      const query = `
+      
+      let {angkatan} = req.query 
+      const query = angkatan? `
       select  d."name" as "d_name", "MataKuliahs"."name" as "m_name", m."angkatan" as "angkatan", array_to_string(array_agg(m."name"),',') as "mahasiswa" from "Dosens" d
       left join "DosenPengajars" dp
       on d."id" = dp."DosenId"
@@ -89,7 +70,18 @@ module.exports = class Controller {
       on k."MahasiswaId" =  m."id"
       left join "MataKuliahs" 
       on "MataKuliahs"."id" = dp."MataKuliahId"
-      WHERE "angkatan" = CASE WHEN ${angkatan} IS NULL THEN "angkatan" ELSE ${angkatan} end
+      WHERE "angkatan" = ${angkatan}
+      group by  "d_name", "m_name", "angkatan"
+      `:`
+      select  d."name" as "d_name", "MataKuliahs"."name" as "m_name", m."angkatan" as "angkatan", array_to_string(array_agg(m."name"),',') as "mahasiswa" from "Dosens" d
+      left join "DosenPengajars" dp
+      on d."id" = dp."DosenId"
+      left join "Kelas" k
+      on dp."id" = k."DosenPengajarId"
+      left join "Mahasiswas" m
+      on k."MahasiswaId" =  m."id"
+      left join "MataKuliahs" 
+      on "MataKuliahs"."id" = dp."MataKuliahId"
       group by  "d_name", "m_name", "angkatan"
       `
       const response = await sequelize.query(query,{ type: sequelize.QueryTypes.SELECT })

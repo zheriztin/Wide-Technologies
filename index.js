@@ -1,6 +1,6 @@
 const express = require('express')
 const { createMahasiswa, updateMahasiswa, deleteMahasiswa, showMahasiswa, showMahasiswaById } = require('./controllers/controllerMahasiswa')
-const { createStudentListByLecturers, createStudentListByLecturersWithSubject, createStudentListByBatch } = require('./controllers/mahasiswa')
+const { createStudentListByLecturers, createStudentListByLecturersWithSubject } = require('./controllers/mahasiswa')
 const errorHandler = require('./middleware/errorHandler')
 const app = express()
 const port = 3000
@@ -12,7 +12,6 @@ app.use(express.json())
 
 app.get('/studentByLectures', createStudentListByLecturers )
 app.get('/studentBySubjectByLectures', createStudentListByLecturersWithSubject)
-app.get('/studentByLecturesbyYear', createStudentListByBatch)
 
 app.get('/', showMahasiswa)
 app.get('/:id', showMahasiswaById)
