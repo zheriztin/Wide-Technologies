@@ -1,0 +1,105 @@
+HTML CSSResult Skip Results Iframe
+/* CSS Document */
+
+body{text-align:center; margin:0; padding:0; font-family:Lucida Grande, Arial; font-size:13px; background-color:#ebebeb; color:#464646;}
+
+.wrapper{margin:0 auto; width:900px;}
+  
+.content{background-color:#FFFFFF; border:1px solid #bab9b9; text-align:center; padding-bottom:25px;}
+
+.in{width:850px; margin:25px auto; text-align:left;}
+
+.line{border-top:1px solid #bab9b9; height:1px; }
+
+
+
+/*.............................................................General.................... */
+
+h1, h2, h3 {margin:0; padding:0; }
+
+h1{font-size:32px;}
+
+h2{font-family:Georgia; font-size:24px; font-style:italic; }
+
+.author p{margin:0; padding:0; }
+
+.forms{line-height:2em; }
+
+a:link, a:visited{color:#30a4b1; text-decoration:none;}
+
+a:hover{color:#f7941d;}
+
+.v_line{padding:0 5px; color:#999999;}
+
+
+/*Header*/
+
+.logo{float:left; margin:25px 0;}
+
+.txt_right{ float:right; margin-top:15px;}
+
+
+
+
+/*Form*/
+
+table{
+  background-color: rgb(247, 247, 247);
+  border-collapse: collapse;
+  color: #464646;
+  display: table-cell;
+  margin: 0px 0px 0px 0px;
+  padding: 10px 10px 10px 10px;
+  vertical-align: middle;
+  border-spacing: 0px;
+  font-size: 60%;
+}
+
+thead,tr,td{
+  width: auto;
+}
+
+thead{
+  background-color: #404040;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+td{
+  padding:15px;
+  font-size: 14px;
+}
+
+tbody tr:hover{
+  background-color: #FFD2A6;
+}
+
+.box{border:1px solid #bab9b9; padding:10px; width:600px; color:#707070; font-size:14px; }
+
+.box2{border:1px solid #bab9b9; padding:10px; width:400px; color:#707070; font-size:14px; }
+
+.com_btn{margin:0px; padding:10px 20px; border:0px; background-color:#f7941d; color:#fff; font-size:14px; }
+
+
+/*Navigation*/  
+
+.navigation{ background-color:#464646; float: left; margin-bottom:20px; width:900px; position:relative;}
+
+.navigation ul{ margin:0px; padding:0px; }
+
+.navigation ul li{list-style:none; float: left; margin: 0; padding: 0; font-weight:normal; }
+
+.navigation li a{float:left; color:#fff; margin: 0; font-size: 14px; text-decoration: none; padding:20px 30px;  }
+
+.navigation li a:hover, .navigation li .active { color:#FFFFFF; background-color:#30a4b1; }
+
+.clear{clear:both;}
+
+/*Footer*/
+
+.footer{text-align:right; margin-bottom:40px;}
+
+

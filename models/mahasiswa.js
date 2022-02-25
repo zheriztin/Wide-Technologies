@@ -15,11 +15,46 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Mahasiswa.init({
-    name: DataTypes.STRING,
-    nim: DataTypes.STRING,
-    alamat: DataTypes.STRING,
-    jurusan: DataTypes.STRING,
-    angkatan: DataTypes.STRING
+    name: {
+      type : DataTypes.STRING,
+      allowNull : false,
+      validate : {
+        notEmpty : {msg : "Name can't be empty!"},
+        notNull : {msg : "Name can't be empty!"}
+      }
+    },
+    nim: {
+      type : DataTypes.STRING,
+      allowNull : false,
+      validate : {
+        notEmpty : {msg : "Nim can't be empty!"},
+        notNull : {msg : "Nim can't be empty!"}
+      }
+    },
+    alamat: {
+      type : DataTypes.STRING,
+      allowNull : false,
+      validate : {
+        notEmpty : {msg : "Alamat can't be empty!"},
+        notNull : {msg : "Alamat can't be empty!"}
+      }
+    },
+    jurusan:{
+      type : DataTypes.STRING,
+      allowNull : false,
+      validate : {
+        notEmpty : {msg : "Jurusan can't be empty!"},
+        notNull : {msg : "Jurusan can't be empty!"}
+      }
+    },
+    angkatan: {
+      type : DataTypes.INTEGER,
+      allowNull : false,
+      validate : {
+        notEmpty : {msg : "Angkatan can't be empty!"},
+        notNull : {msg : "Angkatan can't be empty!"}
+      }
+    },
   }, {
     sequelize,
     modelName: 'Mahasiswa',

@@ -1,0 +1,6 @@
+export const SET_DATA = "SET_DATA"
+export const SET_ERROR = "SET_ERROR" 
+export const SET_DELETE_DATA = "SET_DELETE_DATA"
+export const SET_ADD_DATA = "SET_ADD_DATA"
+export const SET_EDIT_DATA = "SET_EDIT_DATA"
+export const SET_DATA_BY_ID = "SET_DATA_BY_ID"

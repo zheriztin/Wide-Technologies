@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Dosen.hasMany(models.DosenPengajar)
+      
     }
   }
   Dosen.init({

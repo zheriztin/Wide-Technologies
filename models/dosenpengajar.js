@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       DosenPengajar.belongsTo(models.Dosen)
       DosenPengajar.belongsTo(models.MataKuliah)
       DosenPengajar.hasMany(models.Kelas)
+      
 
     }
   }
