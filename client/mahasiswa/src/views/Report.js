@@ -8,12 +8,14 @@ import { fetchLaporanPerDosen, fetchLaporanPerMatakuliah} from '../store/actionC
 export const Report = () => {
   const dispatch = useDispatch()
   const databyDosen = useSelector(state => state.laporanByDosen)
-  console.log(databyDosen,".>");
   const data = useSelector(state => state.laporanByMatakuliah)
   const [laporanPerMatakuliah, setLaporanPerMatakuliah] = useState([])
   const [selectedTab, setSelectedTab] = useState({
     'LaporanMahasiswaPerDosen': true,
     'laporanPerMatakuliah': false,
+  })
+  const [query, setQuery] = useState ({
+    filter: ""
   })
 
   useEffect(()=> {
@@ -43,6 +45,18 @@ export const Report = () => {
   setSelectedTab(newTab)
 }
 
+const filterLaporan= async(e) => {
+  e.preventDefault()
+  const data = await dispatch (fetchLaporanPerMatakuliah(query.filter))
+  setLaporanPerMatakuliah(data)
+}
+
+const handleChange = ({target:{value, name}}) => {
+  setQuery ({
+    ...query,
+    [name]:value
+  })
+}
   return (
     <div className="wrapper">
     <Navbar/>
@@ -86,9 +100,12 @@ export const Report = () => {
       {
         selectedTab['laporanPerMatakuliah'] && (
           <div name="laporanPerMatakuliah" style={{display:'flex', flexWrap:'nowrap', alignItems:'center', justifyContent: 'center', flexDirection: 'column'}}>
-            <div className="col-auto align-items-right">
-              <input type="text" class="form-control"  placeholder="Search by year"/>
+            <form onSubmit={filterLaporan}>
+            <div className="col-auto align-items-right" style={{display:'flex',flexDirection:"row"}}>
+              <input type="text" class="form-control"  placeholder="Search by year" name="filter" value={query.filter} onChange={handleChange}/>
+              <button type="submit" className="btn btn-primary" style={{marginLeft: 5}}>Submit</button>
             </div>
+            </form>
             <div>
           <table>
             <thead>

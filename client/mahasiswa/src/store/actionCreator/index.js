@@ -116,10 +116,11 @@ export function fetchLaporanPerDosen() {
   }
 }
 
-export function fetchLaporanPerMatakuliah() {
+export function fetchLaporanPerMatakuliah(query) {
   return async(dispatch) => {
     try{
-      const response = await axios (baseUrl + 'studentBySubjectByLectures')
+      const newUrl= query? baseUrl + 'studentBySubjectByLectures?angkatan=' + query : baseUrl + 'studentBySubjectByLectures'
+      const response = await axios (newUrl)
       await dispatch(laporanByMatakuliahData(response.data))
     } catch(err) {
       dispatch(setError(err))
