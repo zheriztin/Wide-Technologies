@@ -35,7 +35,7 @@ module.exports = class Controller {
   static createStudentListByLecturers = async (req,res,next) => {
     try {
       const query = `
-      select  d."name" as "d_name", "MataKuliahs"."name" as "m_name", m."angkatan" as "angkatan", array_to_string(array_agg(m."name"),',') as "mahasiswa" from "Dosens" d
+      select  d."name" as "d_name", "MataKuliahs"."name" as "m_name",array_to_string(array_agg(m."name"),',') as "mahasiswa" from "Dosens" d
       left join "DosenPengajars" dp
       on d."id" = dp."DosenId"
       left join "Kelas" k
@@ -44,7 +44,7 @@ module.exports = class Controller {
       on k."MahasiswaId" =  m."id"
       left join "MataKuliahs" 
       on "MataKuliahs"."id" = dp."MataKuliahId"
-     WHERE "angkatan" = CASE WHEN Angkatan IS NULL THEN "angkatan" ELSE Angkatan end
+      WHERE "angkatan" = CASE WHEN Angkatan IS NULL THEN "angkatan" ELSE Angkatan end
       group by  "d_name", "m_name", "angkatan"
       `
       const response = await sequelize.query(query,{ type: sequelize.QueryTypes.SELECT })
@@ -61,7 +61,7 @@ module.exports = class Controller {
       
       let {angkatan} = req.query 
       const query = angkatan? `
-      select  d."name" as "d_name", "MataKuliahs"."name" as "m_name", m."angkatan" as "angkatan", array_to_string(array_agg(m."name"),',') as "mahasiswa" from "Dosens" d
+      select d."name" as "d_name", "MataKuliahs"."name" as "m_name", m."angkatan" as "angkatan", array_to_string(array_agg(m."name"),',') as "mahasiswa" from "Dosens"  d
       left join "DosenPengajars" dp
       on d."id" = dp."DosenId"
       left join "Kelas" k
@@ -73,7 +73,7 @@ module.exports = class Controller {
       WHERE "angkatan" = ${angkatan}
       group by  "d_name", "m_name", "angkatan"
       `:`
-      select  d."name" as "d_name", "MataKuliahs"."name" as "m_name", m."angkatan" as "angkatan", array_to_string(array_agg(m."name"),',') as "mahasiswa" from "Dosens" d
+      select  d."name" as "d_name", "MataKuliahs"."name" as "m_name", m."angkatan" as "angkatan", array_to_string(array_agg(m."name"),',') as "mahasiswa" from "Dosens"  d
       left join "DosenPengajars" dp
       on d."id" = dp."DosenId"
       left join "Kelas" k

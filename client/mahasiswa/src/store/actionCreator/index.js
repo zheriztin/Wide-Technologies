@@ -1,4 +1,4 @@
-import {SET_DATA, SET_ERROR, SET_DELETE_DATA, SET_ADD_DATA, SET_EDIT_DATA, SET_DATA_BY_ID} from "../actionType"
+import {SET_DATA, SET_ERROR, SET_DELETE_DATA, SET_ADD_DATA, SET_LAPORAN_BY_DOSEN, SET_LAPORAN_BY_MATAKULIAH, SET_EDIT_DATA, SET_DATA_BY_ID} from "../actionType"
 import axios from 'axios'
 import Swal from "sweetalert2"
 
@@ -26,6 +26,14 @@ export function dataById (payload) {
 
 export function editById (payload) {
   return {type: SET_EDIT_DATA, payload}
+}
+
+export function laporanByDosenId (payload) {
+  return {type: SET_LAPORAN_BY_DOSEN, payload}
+}
+
+export function laporanByMatakuliahData (payload) {
+  return {type: SET_LAPORAN_BY_MATAKULIAH, payload}
 }
 
 export function fetchData() {
@@ -89,6 +97,30 @@ export function fetchDataById(id) {
     try {
       const response = await axios.get(baseUrl + id)
       return response.data
+    } catch(err) {
+      dispatch(setError(err))
+    }
+  }
+}
+
+export function fetchLaporanPerDosen() {
+  return async(dispatch) => {
+    try{
+      console.log("masuk");
+      const response = await axios (baseUrl + 'studentByLectures')
+      console.log(response.data,">>>>>>");
+      await dispatch(laporanByDosenId(response.data))
+    } catch(err) {
+      dispatch(setError(err))
+    }
+  }
+}
+
+export function fetchLaporanPerMatakuliah() {
+  return async(dispatch) => {
+    try{
+      const response = await axios (baseUrl + 'studentBySubjectByLectures')
+      await dispatch(laporanByMatakuliahData(response.data))
     } catch(err) {
       dispatch(setError(err))
     }

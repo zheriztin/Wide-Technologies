@@ -1,4 +1,4 @@
-import {SET_DATA, SET_ERROR, SET_DELETE_DATA, SET_ADD_DATA, SET_DATA_BY_ID, SET_EDIT_DATA} from "../actionType"
+import {SET_DATA, SET_ERROR, SET_DELETE_DATA, SET_ADD_DATA, SET_LAPORAN_BY_DOSEN, SET_LAPORAN_BY_MATAKULIAH, SET_DATA_BY_ID, SET_EDIT_DATA} from "../actionType"
 
 const initialState = {
   data: [],
@@ -6,7 +6,10 @@ const initialState = {
   deleteData: [],
   addData: [],
   dataById: [],
-  editData: []
+  editData: [],
+  laporanByDosen: [],
+  laporanByMatakuliah: []
+
 }
 
 function dataReducer (state = initialState, action) {
@@ -16,13 +19,17 @@ function dataReducer (state = initialState, action) {
   } else if (type === SET_ERROR) {
     return {...state, error: payload}
   } else if (type === SET_DELETE_DATA) {
-    return {...state, error: payload}
+    return {...state, deleteData: payload}
   } else if (type === SET_ADD_DATA) {
-    return {...state, error: payload}
+    return {...state, addData: payload}
   } else if (type === SET_EDIT_DATA) {
-    return {...state, error: payload}
+    return {...state, editData: payload}
   } else if (type === SET_DATA_BY_ID) {
-    return {...state, error: payload}
+    return {...state, dataById: payload}
+  } else if (type === SET_LAPORAN_BY_DOSEN) {
+    return {...state, laporanByDosen: payload}
+  } else if (type === SET_LAPORAN_BY_MATAKULIAH) {
+    return {...state, laporanByMatakuliah: payload}
   }
   return state
 }

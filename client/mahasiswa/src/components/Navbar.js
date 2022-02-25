@@ -9,7 +9,7 @@ export const Navbar = () => {
           <ul>
             <Link to={`/`}><li><a  className="active">MANAGE</a></li></Link>
             <Link to={`/add`}><li><a>ADD</a></li></Link>
-            <li><a style={{color: "#61dafb"}}>REPORT</a></li>
+            <Link to={`/report`}><li><a>REPORT</a></li></Link>
 
           </ul>
       </div>
